@@ -12,9 +12,6 @@ public class TestAop {
 
     private static final Logger logger = LoggerFactory.getLogger(TestAop.class);
 
-    @Pointcut("@annotation(testMark)")
-    public void marked(){}
-
     @Before("@annotation(testMark)")
     public void before(TestMark testMark){
         logger.info("in before");
