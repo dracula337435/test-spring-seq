@@ -12,12 +12,15 @@ public class TestAop {
 
     private static final Logger logger = LoggerFactory.getLogger(TestAop.class);
 
-    @Before("@annotation(testMark)")
+    @Pointcut("@annotation(testMark)")
+    public void marked(TestMark testMark){}
+
+    @Before("marked(testMark)")
     public void before(TestMark testMark){
         logger.info("in before");
     }
 
-    @Around("@annotation(testMark)")
+    @Around("marked(testMark)")
     public Object around(ProceedingJoinPoint proceedingJoinPoint, TestMark testMark) throws Throwable {
         logger.info("in around, before");
         Object obj = proceedingJoinPoint.proceed();
@@ -25,7 +28,7 @@ public class TestAop {
         return obj;
     }
 
-    @After("@annotation(testMark)")
+    @After("marked(testMark)")
     public void after(TestMark testMark){
         logger.info("in after");
     }
