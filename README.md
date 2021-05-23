@@ -11,6 +11,8 @@ in before
 in controller
 in around, after
 in after
+in ResponseBodyAdvice, supports
+in ResponseBodyAdvice, beforeBodyWrite
 ```
 
 发校验不通的请求，还不到```around```的```before```，即校验在切面之前  
