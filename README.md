@@ -1,6 +1,11 @@
 # 试验spring中几个扩展点的顺序
 
 ```
+in RequestBodyAdvice, supports
+in RequestBodyAdvice, beforeBodyRead
+in RequestBodyAdvice, supports
+in RequestBodyAdvice, afterBodyRead
+校验
 in around, before
 in before
 in controller
