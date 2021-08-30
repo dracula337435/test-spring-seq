@@ -1,6 +1,7 @@
 # 试验spring中几个扩展点的顺序
 
 ```
+in HandlerInterceptor.preHandle
 in RequestBodyAdvice, supports
 in RequestBodyAdvice, beforeBodyRead
 in RequestBodyAdvice, supports
@@ -13,6 +14,22 @@ in around, after
 in after
 in ResponseBodyAdvice, supports
 in ResponseBodyAdvice, beforeBodyWrite
+in HandlerInterceptor.postHandle
+in HandlerInterceptor.afterCompletion
+```
+```
+in HandlerInterceptor.preHandle
+in RequestBodyAdvice, supports
+in RequestBodyAdvice, beforeBodyRead
+in RequestBodyAdvice, supports
+in RequestBodyAdvice, afterBodyRead
+校验错误 
+in HandlerInterceptor.afterCompletion
+in HandlerInterceptor.preHandle
+in ResponseBodyAdvice, supports
+in ResponseBodyAdvice, beforeBodyWrite
+in HandlerInterceptor.postHandle
+in HandlerInterceptor.afterCompletion
 ```
 
 发校验不通的请求，还不到```around```的```before```，即校验在切面之前  
